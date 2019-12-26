@@ -1,0 +1,7 @@
+<apex:component >
+    
+    <h1>
+        WELCOME RAJEEV!!
+    </h1>
+    
+</apex:component>

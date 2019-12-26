@@ -1,0 +1,25 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+   <!-- <div class="slds-card">
+    	<div class = "slds-card">
+            Hello , {!v.greeting}!
+        </div>
+        
+        <div class = "slds-card">
+           <input aura:id="myInput" class = "slds-input" placeholder="Input Here Please"></input>
+            <button onclick="{!c.onsubmit}" class="slds-button slds-button_brand slds-m-top_small slds-m-left_xx-small">Submit</button>
+        </div>
+    </div>
+    
+    <aura:attribute name="greeting" type="String" default="Rajeev" />
+-->
+    
+    <aura:attribute name="greeting" type="String" default="World"/>
+    <div class="slds-card">
+        <div class="slds-card__body slds-card__body_inner slds-p-top_medium">
+            Hello, {!v.greeting}
+            <lightning:input aura:id="myInput" type="text" value="{!v.greeting}"/>
+        </div>
+    </div>
+
+
+</aura:component>

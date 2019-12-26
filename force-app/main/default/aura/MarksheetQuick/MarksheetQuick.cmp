@@ -1,0 +1,99 @@
+<!--
+  @File Name          : MarksheetQuick.cmp
+  @Description        : 
+  @Author             : rajeev_sengar@persistent.com
+  @Group              : 
+  @Last Modified By   : rajeev_sengar@persistent.com
+  @Last Modified On   : 10/14/2019, 11:56:38 PM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    10/13/2019   rajeev_sengar@persistent.com     Initial Version
+-->
+<aura:component implements="force:lightningQuickAction,lightning:actionOverride" controller="MarksheetController">
+    <aura:attribute name="index" type="Integer" default="0" />
+    <aura:attribute name="records" type="Marksheet__c[]" />
+    <aura:attribute name="record" type="Marksheet__c" default="{'sobjectType':'Marksheet__c'}" />
+    <aura:attribute name="rowrecord" type="Marksheet__c" default="{'sobjectType':'Marksheet__c'}" />
+    <aura:attribute name="show" type="boolean" default="false" />
+    <aura:attribute name="showspinner" type="boolean" default="false" />
+    <aura:attribute name="inlineedit" type="boolean" default="false" />
+    <aura:attribute name="showlabel" type="String" default="Show Data" />
+    <aura:attribute name="columns" type="List" />
+    <aura:attribute name="columns0" type="List" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:if isTrue="{! and(!v.showspinner,!v.inlineedit)}">
+        <div class="slds-p-bottom_large slds-p-left_large">
+            <aura:if isTrue="{! !v.show}">
+                <lightning:recordEditForm objectApiName="Marksheet__c">
+                    <lightning:messages />
+
+                    <div class="slds-m-bottom_medium">
+                        {!v.body}
+                    </div>
+
+                </lightning:recordEditForm>
+                <lightning:button variant="brand" label="Add More" title="Base action"
+                    onclick="{! c.handleAddSubject }" />
+                <lightning:button variant="brand" label="{!v.showlabel}" title="Base action" onclick="{! c.showData}" />
+                <aura:set attribute="else">
+                    <div class="slds-m-bottom_medium slds-m-left_medium">
+                        <lightning:button variant="brand" label="Save" title="Base action" onclick="{! c.handleSave}" />
+                        <lightning:button variant="brand" label="{!v.showlabel}" title="Base action"
+                            onclick="{! c.showData}" />
+                    </div>
+                    <aura:if isTrue="{! not(empty(v.records))}">
+
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-3">
+                                <span>
+
+                                    <lightning:datatable keyField="id" data="{! v.records }" columns="{! v.columns0 }"
+                                        hideCheckboxColumn="true" onrowaction="{! c.handleRowAction }"
+                                        resizeColumnDisabled="true" />
+
+                                </span>
+                            </div>
+                            <div class="slds-col slds-size_2-of-3">
+                                <span>
+
+                                    <lightning:datatable keyField="id" data="{! v.records }" columns="{! v.columns }"
+                                        hideCheckboxColumn="true" onrowaction="{! c.handleRowAction }"
+                                        resizeColumnDisabled="true" />
+
+                                </span>
+                            </div>
+                        </div>
+
+                    </aura:if>
+                </aura:set>
+            </aura:if>
+        </div>
+
+        <aura:set attribute="else">
+            <aura:if isTrue="{! !v.inlineedit}">
+                <lightning:spinner alternativeText="Loading" variant="brand" size="small" />
+            </aura:if>
+        </aura:set>
+    </aura:if>
+    <aura:if isTrue="{! v.inlineedit}">
+        <lightning:recordEditForm objectApiName="Marksheet__c">
+            <lightning:messages />
+            <div class="slds-m-right_x-small slds-m-bottom_medium">
+                <div class="slds-grid slds-gutters">
+    				<div class="slds-col slds-size_1-of-4">
+                        <lightning:inputField fieldName="Student__c" value="{!v.rowrecord.Student__c}" />
+                        <lightning:inputField fieldName="Subjects__c" value="{!v.rowrecord.Subjects__c}" />
+                        <lightning:inputField fieldName="PT1__c" value="{!v.rowrecord.PT1__c}" />
+                        <!--<lightning:inputField fieldName="Notebook__c" value="{!v.rowrecord.Notebook__c}" />
+                        <lightning:inputField fieldName="Sub_Enrichment_5__c" value="{!v.rowrecord.Sub_Enrichment_5__c}" />
+                        <lightning:inputField fieldName="Half_Yealry_80__c" value="{!v.rowrecord.Half_Yealry_80__c}" /> -->
+                 	</div>
+               </div>
+            </div>
+        </lightning:recordEditForm>
+        <lightning:button variant="brand" label="Update" title="Base action" onclick="{! c.handleInlineSave}" />
+
+    </aura:if>
+</aura:component>

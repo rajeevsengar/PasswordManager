@@ -1,0 +1,16 @@
+<apex:page standardController="Opportunity">
+    <apex:form >
+ 		<apex:pageBlock >
+        <apex:pageBlockSection >
+             	<apex:inputField value="{!Opportunity.AccountId}"/>
+                <apex:inputField value="{!Opportunity.Amount}"/>
+                <apex:inputField value="{!Opportunity.Name}"/>
+                <apex:inputField value="{!Opportunity.StageName}"/>
+        </apex:pageBlockSection>
+        <apex:pageBlockButtons >
+            <apex:commandButton action="{!save}" value="Save"/>
+        </apex:pageBlockButtons>
+           
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

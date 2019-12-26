@@ -1,0 +1,27 @@
+<apex:page controller="insuranceExtension">
+    <script>
+    window.onload=function()
+    {
+        doInit();
+    };
+    </script>
+    <apex:form >
+        <apex:actionFunction name="doInit" action="{!runMeFirst}" rerender="allPanel"/>
+        <apex:pageBlock id="allPanel">
+            <apex:pageBlockTable value="{!listInsurance}" var="i">
+                <apex:column headerValue="Aadhaar">  
+                    <apex:inputField value="{!i.Aadhar__c}" />
+                </apex:column>
+                
+                <apex:column >
+                    <apex:inputField value="{!i.Cover_Amount__c}"/>
+                </apex:column>
+                <apex:column value="{!i.Duration__c}"/>
+                <apex:column value="{!i.Premium__c}"/>
+                <apex:column value="{!i.Maturity_Date__c}"/> 
+            </apex:pageBlockTable>
+           
+        </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

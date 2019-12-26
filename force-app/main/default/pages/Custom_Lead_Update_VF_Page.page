@@ -1,0 +1,11 @@
+<apex:page controller="MyCustomLeadController">
+    <apex:form >
+    	<p>
+          <apex:inputField label="Last Name" value="{!lead.lastname}"/>
+        </p>
+         <apex:inputField label="Company Name" value="{!lead.company}"/>
+        <apex:inputField label="Lead Status" value="{!lead.status}"/>
+        <apex:inputField label="Employee Count" value="{!lead.numberofemployees}"/>
+        <apex:commandButton action="{!save}" value="Update Now!"/> 
+    </apex:form>
+</apex:page>

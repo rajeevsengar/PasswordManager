@@ -1,0 +1,18 @@
+<apex:page controller="ContactsListController">
+    <apex:form >  
+        <apex:pageBlock title="Contacts List" id="contacts_list">
+            <apex:pageBlockTable value="{!contact}" var="ct">
+                <apex:column headerValue="firstname">
+                <apex:inputField value="{!ct.firstname}"/>
+                </apex:column>
+                <apex:column value="{!ct.LastName}"/>
+                <apex:column value="{!ct.email}"/>
+                <apex:column value="{!ct.title}"/>
+                <apex:column headerValue="Edit">
+                	<apex:outputLink value="{!URLFOR($Action.Contact.Edit,ct.id)}">edit</apex:outputLink>
+                </apex:column>
+                <apex:inlineEditSupport />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>  
+</apex:page>

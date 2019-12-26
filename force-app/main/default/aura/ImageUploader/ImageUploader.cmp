@@ -1,0 +1,13 @@
+<aura:component controller="AttachmentController" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="recordId" type="String" />
+    <div class="slds-p-around_xxx-small">
+        <lightning:card >
+            <lightning:fileUpload label="Attach Picture"
+                                  name="fileUploader"
+                                  multiple="true"
+                                  accept=".pdf, .png, .jpg"
+                                  recordId="{!v.recordId}"
+                                  onuploadfinished="{!c.handleUploadFinished}"/>
+        </lightning:card>
+    </div>
+</aura:component>

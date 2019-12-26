@@ -1,0 +1,34 @@
+.THIS .slds-button_icon-bare {
+    display: none;
+}
+
+.THIS .slds-truncate {
+    text-overflow: inherit;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.THIS .slds-th__action {
+    justify-content: center !important;
+    background-color: #16325c;
+    color: white;
+}
+
+
+.THIS .slds-grid_align-spread {
+    justify-content: center !important;
+    height: 50px;
+}
+
+.THIS .slds-grid_align-end {
+    justify-content: center !important;
+    height: 50px;
+}
+
+.THIS .slds-scrollable_x .slds-scrollable--x {
+
+    max-width: 100%;
+    overflow: visible;
+    overflow-x: auto;
+}

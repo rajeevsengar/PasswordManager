@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Students__c</fullName>
+    <externalId>false</externalId>
+    <label>Students</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Rajat Khajanchi</fullName>
+                <default>false</default>
+                <label>Rajat Khajanchi</label>
+            </value>
+            <value>
+                <fullName>Reeyansh Soni</fullName>
+                <default>false</default>
+                <label>Reeyansh Soni</label>
+            </value>
+            <value>
+                <fullName>Rishabh Adhruj</fullName>
+                <default>false</default>
+                <label>Rishabh Adhruj</label>
+            </value>
+            <value>
+                <fullName>Roshan Nagwani</fullName>
+                <default>false</default>
+                <label>Roshan Nagwani</label>
+            </value>
+            <value>
+                <fullName>Rudransh Rajput</fullName>
+                <default>false</default>
+                <label>Rudransh Rajput</label>
+            </value>
+            <value>
+                <fullName>Sahil Gurjar</fullName>
+                <default>false</default>
+                <label>Sahil Gurjar</label>
+            </value>
+            <value>
+                <fullName>Samriddhi Mittal</fullName>
+                <default>false</default>
+                <label>Samriddhi Mittal</label>
+            </value>
+            <value>
+                <fullName>Sanchita Dubey</fullName>
+                <default>false</default>
+                <label>Sanchita Dubey</label>
+            </value>
+            <value>
+                <fullName>Sarthak Jaiswal</fullName>
+                <default>false</default>
+                <label>Sarthak Jaiswal</label>
+            </value>
+            <value>
+                <fullName>Shaily Gurjar</fullName>
+                <default>false</default>
+                <label>Shaily Gurjar</label>
+            </value>
+            <value>
+                <fullName>Shami Kourav</fullName>
+                <default>false</default>
+                <label>Shami Kourav</label>
+            </value>
+            <value>
+                <fullName>Shivank Paliwal</fullName>
+                <default>false</default>
+                <label>Shivank Paliwal</label>
+            </value>
+            <value>
+                <fullName>Shouryapratap Singh</fullName>
+                <default>false</default>
+                <label>Shouryapratap Singh</label>
+            </value>
+            <value>
+                <fullName>Shrejal Chourisya</fullName>
+                <default>false</default>
+                <label>Shrejal Chourisya</label>
+            </value>
+            <value>
+                <fullName>Shreya Jain</fullName>
+                <default>false</default>
+                <label>Shreya Jain</label>
+            </value>
+            <value>
+                <fullName>Siddhi Kourav</fullName>
+                <default>false</default>
+                <label>Siddhi Kourav</label>
+            </value>
+            <value>
+                <fullName>Siddhi Shukla</fullName>
+                <default>false</default>
+                <label>Siddhi Shukla</label>
+            </value>
+            <value>
+                <fullName>Somesh Paliwal</fullName>
+                <default>false</default>
+                <label>Somesh Paliwal</label>
+            </value>
+            <value>
+                <fullName>Srashti Agrawal</fullName>
+                <default>false</default>
+                <label>Srashti Agrawal</label>
+            </value>
+            <value>
+                <fullName>Suyash Dixit</fullName>
+                <default>false</default>
+                <label>Suyash Dixit</label>
+            </value>
+            <value>
+                <fullName>Swarnima Patel</fullName>
+                <default>false</default>
+                <label>Swarnima Patel</label>
+            </value>
+            <value>
+                <fullName>Tanishqa Jethwani</fullName>
+                <default>false</default>
+                <label>Tanishqa Jethwani</label>
+            </value>
+            <value>
+                <fullName>Tapasya Mishra</fullName>
+                <default>false</default>
+                <label>Tapasya Mishra</label>
+            </value>
+            <value>
+                <fullName>Trapti Jagati</fullName>
+                <default>false</default>
+                <label>Trapti Jagati</label>
+            </value>
+            <value>
+                <fullName>Udayraj Thakur</fullName>
+                <default>false</default>
+                <label>Udayraj Thakur</label>
+            </value>
+            <value>
+                <fullName>Ujjwal Pandey</fullName>
+                <default>false</default>
+                <label>Ujjwal Pandey</label>
+            </value>
+            <value>
+                <fullName>Ummehani Hussain</fullName>
+                <default>false</default>
+                <label>Ummehani Hussain</label>
+            </value>
+            <value>
+                <fullName>Vaishnawi Kourav</fullName>
+                <default>false</default>
+                <label>Vaishnawi Kourav</label>
+            </value>
+            <value>
+                <fullName>Vanishka Jethwani</fullName>
+                <default>false</default>
+                <label>Vanishka Jethwani</label>
+            </value>
+            <value>
+                <fullName>Vansh Vishwakarma</fullName>
+                <default>false</default>
+                <label>Vansh Vishwakarma</label>
+            </value>
+            <value>
+                <fullName>Vedansh Rajoriya</fullName>
+                <default>false</default>
+                <label>Vedansh Rajoriya</label>
+            </value>
+            <value>
+                <fullName>Vedika Yadav</fullName>
+                <default>false</default>
+                <label>Vedika Yadav</label>
+            </value>
+            <value>
+                <fullName>Deeksha Yadav</fullName>
+                <default>false</default>
+                <label>Deeksha Yadav</label>
+            </value>
+            <value>
+                <fullName>Samragee Saboo</fullName>
+                <default>false</default>
+                <label>Samragee Saboo</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

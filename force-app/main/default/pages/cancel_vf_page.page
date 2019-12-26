@@ -1,0 +1,7 @@
+<apex:page standardController="Account">
+    <apex:outputField label="Name" value="{!account.name}"/>
+    <apex:form >
+        
+    	<apex:commandButton value="cancel" action="{!cancel}"/>
+    </apex:form>
+</apex:page>
