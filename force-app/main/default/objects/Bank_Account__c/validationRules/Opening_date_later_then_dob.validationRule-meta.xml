@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opening_date_later_then_dob</fullName>
+    <active>true</active>
+    <errorConditionFormula>Opening_Date__c  &lt;  Aadhar__r.Date_Of_Birth__c</errorConditionFormula>
+    <errorMessage>Opening date should be greater than dob</errorMessage>
+</ValidationRule>
