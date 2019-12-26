@@ -11,6 +11,22 @@
         $A.enqueueAction(action);
     },
 
+
+    getWebsiteOptions: function (component, selectedCategoryValue) {
+        var action = component.get("c.getWebsite");
+        action.setParams({
+            category: selectedCategoryValue
+        });
+        action.setCallback(this, function (response) {
+            var state = response.getState();
+            if (state === "SUCCESS") {
+                component.set("v.websiteOptions", response.getReturnValue());
+                component.set("v.selectedLabel", component.get("v.websiteOptions").find(opt => opt.value === component.get("v.newPassword.Website__c")).label);
+            }
+        });
+        $A.enqueueAction(action);
+    },
+
     handlePasswordSave: function (component, event) {
         var action = component.get("c.savePassword");
         var self = this;
@@ -58,19 +74,6 @@
         component.set("v.isCategoryOtherSelected", false);
     },
 
-    getWebsiteOptions: function (component, selectedCategoryValue) {
-        var action = component.get("c.getWebsite");
-        action.setParams({
-            category: selectedCategoryValue
-        });
-        action.setCallback(this, function (response) {
-            var state = response.getState();
-            if (state === "SUCCESS") {
-                component.set("v.websiteOptions", response.getReturnValue());
-            }
-        });
-        $A.enqueueAction(action);
-    },
     showSpinner: function (component) {
         var spinner = component.find("mySpinner");
         $A.util.removeClass(spinner, "slds-hide");
@@ -94,5 +97,6 @@
             event.getSource().set("v.iconName", 'utility:copy_to_clipboard');
         }, 700);
 
-    }
+    },
+
 })

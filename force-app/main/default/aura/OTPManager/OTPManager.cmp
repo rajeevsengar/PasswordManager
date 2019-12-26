@@ -1,0 +1,31 @@
+<!--
+  @File Name          : OTPManager.cmp
+  @Description        : 
+  @Author             : rajeev_sengar@persistent.com
+  @Group              : 
+  @Last Modified By   : rajeev_sengar@persistent.com
+  @Last Modified On   : 11/24/2019, 9:20:05 PM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    11/24/2019   rajeev_sengar@persistent.com     Initial Version
+-->
+<aura:component controller="PasswordManagerCtrl">
+    <aura:attribute name="username" type="String" />
+    <aura:attribute name="email" type="String" />
+    <aura:attribute name="isOTPSent" type="Boolean" default="false" />
+    <aura:attribute name="inputPass" type="Integer" />
+
+    <!-- <aura:if isTrue="{!v.isOTPSent}">
+        <div class="row">
+            <lightning:input type="password" label="Verify OTP" value="{!v.inputPass}" />
+        </div>
+        <lightning:button variant="brand" label="Verify" onclick="{! c.verifyPassword }" />
+        <aura:set attribute="else"> -->
+    <p>{!v.username},</p>
+    <p>Your all attempts to verify passwords are exhausted. Please click below to receive OTP in you registered
+        email</p>
+    <p>{!v.email}</p>
+    <lightning:button variant="brand" label="Send OTP" onclick="{! c.sendOTP }" />
+    <!-- </aura:set>
+    </aura:if> -->
+</aura:component>
