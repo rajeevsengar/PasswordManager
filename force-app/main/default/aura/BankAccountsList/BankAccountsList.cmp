@@ -1,0 +1,14 @@
+<!--
+  @File Name          : BankAccountsList.cmp
+  @Description        : 
+  @Author             : rajeev_sengar@persistent.com
+  @Group              : 
+  @Last Modified By   : rajeev_sengar@persistent.com
+  @Last Modified On   : 12/15/2019, 1:27:21 PM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    12/15/2019   rajeev_sengar@persistent.com     Initial Version
+-->
+<aura:component>
+    BankAccountsList
+</aura:component>

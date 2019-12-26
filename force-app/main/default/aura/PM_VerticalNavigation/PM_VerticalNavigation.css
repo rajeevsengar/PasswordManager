@@ -1,0 +1,24 @@
+.THIS .slds-nav-vertical__action {
+    font-size: large;
+    color: white;
+    font-family: Lucida Console;
+}
+
+.THIS .slds-nav-vertical__item.slds-is-active .slds-nav-vertical__action {
+    background: rgb(250, 250, 249);
+    color: black;
+}
+
+.THIS .slds-nav-vertical__title {
+    color: rgb(174, 169, 169);
+    font-weight: bolder;
+}
+
+.THIS .navigation {
+    border-right: 1px solid #e7e7e7;
+}
+
+.myStyle.THIS {
+    background-image: url(/resource/dark_background);
+    height: 800px;
+}

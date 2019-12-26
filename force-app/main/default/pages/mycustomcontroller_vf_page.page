@@ -1,7 +1,0 @@
-<apex:page controller="mycustomcontroller">
-    <apex:form >
-    	<apex:pageBlock >
-        	<apex:commandButton action="{!method}" value="try this"/>
-        </apex:pageBlock>
-    </apex:form>
-</apex:page>

@@ -1,0 +1,22 @@
+<!--
+  @File Name          : PM_MenuPages.cmp
+  @Description        : 
+  @Author             : rajeev_sengar@persistent.com
+  @Group              : 
+  @Last Modified By   : rajeev_sengar@persistent.com
+  @Last Modified On   : 12/25/2019, 3:10:28 PM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    12/15/2019   rajeev_sengar@persistent.com     Initial Version
+-->
+<aura:component>
+
+  <aura:handler name="init" value="{!this}" action="{!c.init}" />
+  <aura:attribute name="selectedLabel" type="String" />
+  <aura:attribute name="selectedComponent" type="String" />
+  <aura:handler name="change" value="{!v.selectedComponent}" action="{!c.handleChangeItem}" />
+
+  <div class="slds-p-around_small myStyle">
+    {!v.body}
+  </div>
+</aura:component>

@@ -1,0 +1,15 @@
+<!--
+  @File Name          : PM_headerHome.cmp
+  @Description        : 
+  @Author             : rajeev_sengar@persistent.com
+  @Group              : 
+  @Last Modified By   : rajeev_sengar@persistent.com
+  @Last Modified On   : 12/25/2019, 5:33:15 PM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    12/25/2019   rajeev_sengar@persistent.com     Initial Version
+-->
+<aura:component>
+    <lightning:card class="headerStyle">
+    </lightning:card>
+</aura:component>

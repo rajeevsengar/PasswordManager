@@ -1,0 +1,23 @@
+<!--
+  @File Name          : PM_InputForms.cmp
+  @Description        : 
+  @Author             : rajeev_sengar@persistent.com
+  @Group              : 
+  @Last Modified By   : rajeev_sengar@persistent.com
+  @Last Modified On   : 12/23/2019, 12:37:55 AM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    12/23/2019   rajeev_sengar@persistent.com     Initial Version
+-->
+<aura:component implements="force:appHostable" access="global">
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_1-of-2">
+            <span>
+                <c:PM_PasswordForm></c:PM_PasswordForm>
+            </span>
+        </div>
+        <div class="slds-col slds-size_1-of-2">
+            <span>1</span>
+        </div>
+    </div>
+</aura:component>

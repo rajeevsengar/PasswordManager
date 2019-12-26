@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Validate_quantity</fullName>
-    <active>true</active>
-    <errorConditionFormula>IF( ISNEW() , Book__r.Quantity__c  &lt;= 0, 
-ISCHANGED(Book__c) &amp;&amp; Book__r.Quantity__c  &lt;= 0)</errorConditionFormula>
-    <errorMessage>This Book Is Out Of Stock</errorMessage>
-</ValidationRule>

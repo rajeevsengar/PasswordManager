@@ -1,8 +1,0 @@
-<apex:page standardController="Book__c">
-    <apex:pageBlock >
-    	<apex:pageBlockTable value="{!Book__c}" var="b">
-            <apex:column headerValue="edit" 
-                         />
-        </apex:pageBlockTable>
-    </apex:pageBlock>
-</apex:page>

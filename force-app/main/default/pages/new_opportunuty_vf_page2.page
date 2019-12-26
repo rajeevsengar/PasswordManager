@@ -1,3 +1,0 @@
-<apex:page standardController="Opportunity">
-    <apex:detail />
-</apex:page>

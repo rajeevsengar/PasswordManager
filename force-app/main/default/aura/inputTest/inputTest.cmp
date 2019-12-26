@@ -1,9 +1,0 @@
-<aura:component >
-    <aura:attribute name="in" type="String" default="base"/>
-    <aura:attribute name="in2" type="String" default="base" />
-    
-    <lightning:input name="testInput" value="{!v.in}" placeholder="Your Input" label="Input Please::" onchange="{! c.handleClick }"/>  
-     <lightning:button label="{!v.in}" title="Neutral action" onclick="{! c.handleClick }" variant="{!v.in2}"/> 
-    <!-- <lightning:input name="testInput2" label="Input 2" value="{!v.in2}" readonly="true"/> -->
-   
-</aura:component>

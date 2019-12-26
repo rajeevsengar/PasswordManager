@@ -1,0 +1,36 @@
+<!--
+  @File Name          : PM_VerticalNavigation.cmp
+  @Description        : 
+  @Author             : rajeev_sengar@persistent.com
+  @Group              : 
+  @Last Modified By   : rajeev_sengar@persistent.com
+  @Last Modified On   : 12/25/2019, 4:08:07 PM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    12/15/2019   rajeev_sengar@persistent.com     Initial Version
+-->
+<aura:component>
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:attribute name="items" type="Object" access="PRIVATE" />
+    <aura:attribute name="selectedItem" type="String" default="PasswordsList" />
+    <aura:attribute name="selectedLabel" type="String" />
+    <aura:registerEvent name="verticalnavigationevent" type="c:PM_VerticalNavigationEvent" />
+
+    <div class="myStyle">
+
+        <lightning:verticalNavigation selectedItem="{! v.selectedItem }" onselect="{! c.handleSelect }"
+            class="navigation">
+
+            <aura:iteration items="{! v.items }" var="sections">
+                <lightning:verticalNavigationSection label="{! sections.title}">
+                    <aura:iteration items="{! sections.values }" var="values">
+                        <div class="slds-nav-vertical__item">
+                        </div>
+                        <lightning:verticalNavigationItem label="{!values.label}" name="{!values.name}" />
+                    </aura:iteration>
+                </lightning:verticalNavigationSection>
+            </aura:iteration>
+        </lightning:verticalNavigation>
+    </div>
+
+</aura:component>

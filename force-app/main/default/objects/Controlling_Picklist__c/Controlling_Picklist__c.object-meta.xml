@@ -144,21 +144,20 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>false</enableActivities>
-    <enableBulkApi>false</enableBulkApi>
+    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>false</enableReports>
-    <enableSearch>true</enableSearch>
-    <enableSharing>false</enableSharing>
-    <enableStreamingApi>false</enableStreamingApi>
-    <label>Bank Account</label>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <label>Controlling Picklist</label>
     <nameField>
-        <displayFormat>A-{0000}</displayFormat>
-        <label>Account Id</label>
-        <type>AutoNumber</type>
+        <label>Controlling Picklist Name</label>
+        <type>Text</type>
     </nameField>
-    <pluralLabel>Bank Accounts</pluralLabel>
+    <pluralLabel>Controlling Picklist</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
