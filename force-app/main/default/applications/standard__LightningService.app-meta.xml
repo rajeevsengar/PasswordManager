@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
     <formFactors>Small</formFactors>
     <formFactors>Large</formFactors>
@@ -13,15 +13,11 @@
     <tabs>standard-report</tabs>
     <tabs>standard-Dashboard</tabs>
     <tabs>standard-home</tabs>
-    <tabs>Authorisation_Pin__c</tabs>
     <tabs>Password__c</tabs>
     <tabs>Bank_Account__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>LightningService_UtilityBar</utilityBar>
     <workspaceConfig>
-        <mappings>
-            <tab>Authorisation_Pin__c</tab>
-        </mappings>
         <mappings>
             <tab>Bank_Account__c</tab>
         </mappings>
