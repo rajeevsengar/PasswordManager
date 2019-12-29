@@ -1,30 +1,14 @@
 ({
-    getCategoryOptions: function (component) {
-        var action = component.get("c.getCategory");
-        action.setCallback(this, function (response) {
-            var state = response.getState();
-            if (state === "SUCCESS") {
-                component.set("v.options", response.getReturnValue());
-            }
-        });
 
-        $A.enqueueAction(action);
-    },
-
-
-    getWebsiteOptions: function (component, selectedCategoryValue) {
-        var action = component.get("c.getWebsite");
-        action.setParams({
-            category: selectedCategoryValue
-        });
-        action.setCallback(this, function (response) {
-            var state = response.getState();
-            if (state === "SUCCESS") {
-                component.set("v.websiteOptions", response.getReturnValue());
-                component.set("v.selectedLabel", component.get("v.websiteOptions").find(opt => opt.value === component.get("v.newPassword.Website__c")).label);
-            }
-        });
-        $A.enqueueAction(action);
+    getWebsiteOptions: function (component) {
+        var selectedCategoryValue = component.get("v.newPassword.Category__c");
+        var websiteOptions = component.get("v.websiteOptions");
+        var websites = [];
+        for (var i = 0; i < websiteOptions.length; i++) {
+            if (websiteOptions[i].category == selectedCategoryValue)
+                websites.push(websiteOptions[i]);
+        }
+        component.set("v.websites", websites);
     },
 
     handlePasswordSave: function (component, event) {

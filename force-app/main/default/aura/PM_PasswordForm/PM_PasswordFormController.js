@@ -1,19 +1,21 @@
 ({
     init: function (component, event, helper) {
-        helper.getCategoryOptions(component);
+        // helper.getCategoryOptions(component);
 
-        component.find("passwordRecordCreator").reloadRecord(
-            false, // skip cache?
-            $A.getCallback(function () {
-                var rec = component.get("v.newPassword");
-                var error = component.get("v.newPasswordError");
-                if (error || (rec === null)) {
-                    console.log("Error initializing record template: " + error);
-                    return;
-                }
-                helper.getWebsiteOptions(component, component.get("v.newPassword.Category__c"));
-            })
-        );
+        // component.find("passwordRecordCreator").reloadRecord(
+        //     false, // skip cache?
+        //     $A.getCallback(function () {
+        //         var rec = component.get("v.newPassword");
+        //         var error = component.get("v.newPasswordError");
+        //         if (error || (rec === null)) {
+        //             console.log("Error initializing record template: " + error);
+        //             return;
+        //         }
+        //         helper.getWebsiteOptions(component, component.get("v.newPassword.Category__c"));
+        //     })
+        // );
+        helper.getWebsiteOptions(component);
+
     },
 
     handleChange: function (component, event, helper) {
@@ -23,7 +25,7 @@
         } else {
             component.set("v.isCategoryOtherSelected", false);
         }
-        helper.getWebsiteOptions(component, selectedCategoryValue);
+        helper.getWebsiteOptions(component);
     },
 
     handleWebsiteChange: function (component, event, helper) {

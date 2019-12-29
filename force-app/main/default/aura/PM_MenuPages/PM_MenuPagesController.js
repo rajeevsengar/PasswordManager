@@ -11,5 +11,10 @@
 
     handleChangeItem: function (component, event, helper) {
         helper.createCmp(component);
-    }
+    },
+
+    handleHeaderSave: function (component, event, helper) {
+        var passwordsList = component.find('PasswordsListid');
+        passwordsList[0].headerSaveClickedMethod();
+    },
 })

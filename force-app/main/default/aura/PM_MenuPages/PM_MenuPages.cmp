@@ -4,7 +4,7 @@
   @Author             : rajeev_sengar@persistent.com
   @Group              : 
   @Last Modified By   : rajeev_sengar@persistent.com
-  @Last Modified On   : 12/25/2019, 3:10:28 PM
+  @Last Modified On   : 12/28/2019, 11:18:18 PM
   @Modification Log   : 
   Ver       Date            Author      		    Modification
   1.0    12/15/2019   rajeev_sengar@persistent.com     Initial Version
@@ -14,9 +14,12 @@
   <aura:handler name="init" value="{!this}" action="{!c.init}" />
   <aura:attribute name="selectedLabel" type="String" />
   <aura:attribute name="selectedComponent" type="String" />
+  <aura:attribute name="height" type="Integer" />
+  <aura:attribute name="headerSaveClicked" type="Boolean" />
   <aura:handler name="change" value="{!v.selectedComponent}" action="{!c.handleChangeItem}" />
+  <aura:handler name="change" value="{!v.headerSaveClicked}" action="{!c.handleHeaderSave}" />
 
-  <div class="slds-p-around_small myStyle">
+  <div class="slds-p-around_small myStyle" style="{! 'height:' + v.height + 'px'}">
     {!v.body}
   </div>
 </aura:component>

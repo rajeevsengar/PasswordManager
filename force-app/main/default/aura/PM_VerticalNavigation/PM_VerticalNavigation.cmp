@@ -4,7 +4,7 @@
   @Author             : rajeev_sengar@persistent.com
   @Group              : 
   @Last Modified By   : rajeev_sengar@persistent.com
-  @Last Modified On   : 12/25/2019, 4:08:07 PM
+  @Last Modified On   : 12/28/2019, 7:21:38 PM
   @Modification Log   : 
   Ver       Date            Author      		    Modification
   1.0    12/15/2019   rajeev_sengar@persistent.com     Initial Version
@@ -14,9 +14,10 @@
     <aura:attribute name="items" type="Object" access="PRIVATE" />
     <aura:attribute name="selectedItem" type="String" default="PasswordsList" />
     <aura:attribute name="selectedLabel" type="String" />
+    <aura:attribute name="height" type="Integer" />
     <aura:registerEvent name="verticalnavigationevent" type="c:PM_VerticalNavigationEvent" />
 
-    <div class="myStyle">
+    <div style="{! 'height:' + v.height + 'px'}" class="myStyle">
 
         <lightning:verticalNavigation selectedItem="{! v.selectedItem }" onselect="{! c.handleSelect }"
             class="navigation">

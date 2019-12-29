@@ -1,5 +1,6 @@
 ({
-    myAction : function(component, event, helper) {
-
+    onSave: function (component, event, helper) {
+        var saveEvent = component.getEvent("headerSaveEvent");
+        saveEvent.fire();
     }
 })
