@@ -14,7 +14,6 @@ public with sharing class PasswordsListController {
     
     private static List<LabelVsValueWrapper> getCategory(){
         List<LabelVsValueWrapper> categoryList = new List<LabelVsValueWrapper>();
-        categoryList.add(new LabelVsValueWrapper('Other','',''));
         for(Controlling_Picklist__c category : [select Name from Controlling_Picklist__c where Field_API_Name__c = 'Category__c']){
             categoryList.add(new LabelVsValueWrapper(category.Name,category.Id,''));
         }
@@ -23,7 +22,6 @@ public with sharing class PasswordsListController {
 
     private static List<LabelVsValueWrapper> getWebsite(){
         List<LabelVsValueWrapper> websitesList = new List<LabelVsValueWrapper>();
-        websitesList.add(new LabelVsValueWrapper('Other','',''));
         String query = 'select Name,Controlling_Picklist__c from Dependent_Picklist__c';
         for(Dependent_Picklist__c website : Database.query(query)){
             websitesList.add(new LabelVsValueWrapper(website.Name,website.Id,website.Controlling_Picklist__c));

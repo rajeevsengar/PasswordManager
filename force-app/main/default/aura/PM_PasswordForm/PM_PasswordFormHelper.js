@@ -29,6 +29,20 @@
         $A.enqueueAction(action);
     },
 
+    handlePassworddelete: function (component, event) {
+        var self = this;
+        component.find("passwordRecordCreator").deleteRecord(
+            $A.getCallback(function () {
+                self.refreshPage(component);
+            })
+        );
+    },
+
+    refreshPage: function (component) {
+        var pageRefreshEvent = component.getEvent("pageRefreshEvent");
+        pageRefreshEvent.fire();
+    },
+
     handleSuccess: function (event) {
         var orignalLabel = event.getSource().get("v.label");
         event.getSource().set("v.iconName", 'utility:check');
@@ -41,6 +55,7 @@
     },
 
     clearForm: function (component) {
+        var passwordId = component.get("v.newPassword").Id;
         component.find("passwordRecordCreator").getNewRecord(
             "Password__c", // sObject type 
             null, // recordTypeId
@@ -55,7 +70,7 @@
                 console.log("Record template initialized: " + rec.sobjectType);
             })
         );
-        component.set("v.isCategoryOtherSelected", false);
+        component.set(component.get("v.newPassword").Id, passwordId);
     },
 
     showSpinner: function (component) {

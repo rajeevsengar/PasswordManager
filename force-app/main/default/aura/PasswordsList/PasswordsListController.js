@@ -4,7 +4,10 @@
     },
 
     onSave: function (component, event, helper) {
-        console.log(component.get("v.passwordsList"));
         helper.saveAllPasswords(component);
+    },
+
+    handlePageRefreshEvent: function (component, event, helper) {
+        helper.getAllPasswords(component);
     },
 })

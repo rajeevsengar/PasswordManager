@@ -14,7 +14,6 @@
         $A.enqueueAction(action);
     },
     saveAllPasswords: function (component) {
-        debugger
         var action = component.get("c.saveAllPasswords");
         action.setParams({
             passwordsList: component.get("v.passwordsList")
