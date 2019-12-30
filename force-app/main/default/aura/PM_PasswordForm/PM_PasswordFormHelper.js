@@ -76,11 +76,12 @@
                     console.log("Error initializing record template: " + error);
                     return;
                 }
-                console.log("Record template initialized: " + rec.sobjectType);
+                // If record is present then set it in attribute
+                component.set("v.newPassword.Id", passwordId);
             })
         );
-        component.set(component.get("v.newPassword").Id, passwordId);
     },
+
 
     showSpinner: function (component) {
         var spinner = component.find("mySpinner");

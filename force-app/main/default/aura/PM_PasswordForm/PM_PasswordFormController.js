@@ -1,7 +1,6 @@
 ({
     init: function (component, event, helper) {
         helper.getWebsiteOptions(component);
-
     },
 
     handleChange: function (component, event, helper) {

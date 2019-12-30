@@ -3,8 +3,8 @@
   @Description        : 
   @Author             : rajeev_sengar@persistent.com
   @Group              : 
-  @Last Modified By   : rajeev_sengar@persistent.com
-  @Last Modified On   : 12/28/2019, 9:55:09 PM
+  @Last Modified By   : rajeevsengar@persistent.com
+  @Last Modified On   : 30/12/2019, 1:20:03 pm
   @Modification Log   : 
   Ver       Date            Author      		    Modification
   1.0    12/25/2019   rajeev_sengar@persistent.com     Initial Version
@@ -12,6 +12,6 @@
 <aura:component>
   <aura:registerEvent name="headerSaveEvent" type="c:PM_HeaderSaveEvent" />
   <lightning:card class="headerStyle">
-    <lightning:button label="Save" iconName="utility:save" onclick="{!c.onSave}"></lightning:button>
+    <lightning:button label="Save" iconName="utility:save" onclick="{!c.onSave}" class="buttonCSS"></lightning:button>
   </lightning:card>
 </aura:component>
