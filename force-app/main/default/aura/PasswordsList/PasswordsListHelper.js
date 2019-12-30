@@ -8,7 +8,6 @@
                 component.set("v.passwordsList", response.getReturnValue().passwords);
                 component.set("v.categoryOptions", response.getReturnValue().categories);
                 component.set("v.websiteOptions", response.getReturnValue().websites);
-                console.log(JSON.stringify(response.getReturnValue()));
                 self.addNew(component);
                 self.hideSpinner(component);
             }
@@ -23,8 +22,6 @@
     },
 
     saveAllPasswords: function (component) {
-        console.table(component.get("v.passwordsList"));
-        console.log(JSON.stringify(component.get("v.passwordsList")));
         var action = component.get("c.saveAllPasswords");
         action.setParams({
             passwordsList: component.get("v.passwordsList")
