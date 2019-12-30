@@ -17,8 +17,12 @@
     },
 
     addNew: function (component) {
+        var passwordsList = component.get("v.passwordsList");
+        passwordsList.reverse();
         var length = component.get("v.passwordsList").length;
         component.set(`v.passwordsList[${length}].Id`, null);
+        passwordsList.reverse();
+        component.set("v.passwordsList", passwordsList);
     },
 
     saveAllPasswords: function (component) {
