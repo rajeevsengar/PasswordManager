@@ -43,12 +43,12 @@
         }
     },
 
-    openURL: function (component, event, helper) {
+    openURL: function (component) {
         window.open(component.find('URL__c').get("v.value"));
     },
 
     onDelete: function (component, event, helper) {
-        helper.handlePassworddelete(component, event);
+        confirm('Are You Sure?') && helper.handlePassworddelete(component, event);
     },
 
 })
