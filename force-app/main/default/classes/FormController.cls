@@ -19,7 +19,8 @@ public with sharing class FormController {
 
     @AuraEnabled
     public static void deletePassword(Password__c passwordObject){
-        delete passwordObject;
+        if(passwordObject != null && String.isNotBlank(passwordObject.Id))
+            delete passwordObject;
     }
 
     public class LabelVsValueWrapper{
