@@ -16,4 +16,7 @@
             component.set("v.isHeaderAddClicked", !component.get("v.isHeaderAddClicked"));
 
     },
+    handlePaginationEvent: function (component, event, helper) {
+        component.set("v.menuPageHeight", event.getParam("numberOfRecords") * 790);
+    },
 });

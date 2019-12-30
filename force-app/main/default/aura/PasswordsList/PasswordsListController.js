@@ -18,7 +18,6 @@
     },
 
     handlePaginationEvent: function (component, event, helper) {
-        debugger
         component.set("v.start", event.getParam("startIndex"));
         component.set("v.end", event.getParam("lastIndex"));
     },

@@ -1,4 +1,5 @@
 <aura:event type="APPLICATION" description="Event template">
     <aura:attribute name="startIndex" type="Integer" />
     <aura:attribute name="lastIndex" type="Integer" />
+    <aura:attribute name="numberOfRecords" type="Integer" default="6" />
 </aura:event>
