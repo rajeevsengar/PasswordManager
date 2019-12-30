@@ -23,6 +23,7 @@
             if (state === "SUCCESS") {
                 self.hideSpinner(component);
                 self.handleSuccess(event);
+                self.refreshPage(component);
             }
         });
 

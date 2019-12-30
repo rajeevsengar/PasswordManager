@@ -1,3 +1,14 @@
+/**
+ * @File Name          : PasswordsListController.cls
+ * @Description        : 
+ * @Author             : rajeevsengar@persistent.com
+ * @Group              : 
+ * @Last Modified By   : rajeevsengar@persistent.com
+ * @Last Modified On   : 30/12/2019, 4:53:25 pm
+ * @Modification Log   : 
+ * Ver       Date            Author      		    Modification
+ * 1.0    30/12/2019   rajeevsengar@persistent.com     Initial Version
+**/
 public with sharing class PasswordsListController {
     @AuraEnabled
     public static AllPasswordsWrapper getAllPasswords(){
@@ -8,6 +19,12 @@ public with sharing class PasswordsListController {
 
     @AuraEnabled
     public static void saveAllPasswords(List<Password__c> passwordsList){
+        for (Integer i = (passwordsList.size()-1) ; i>= 0 ; i--){
+            Password__c password = passwordsList[i];
+            if(String.isBlank(password.Password__c) || String.isBlank(password.Username__c)){
+                passwordsList.remove(i);
+            }
+        }
         upsert passwordsList;
     }
 

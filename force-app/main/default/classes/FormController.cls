@@ -4,7 +4,7 @@
  * @Author             : rajeevsengar@persistent.com
  * @Group              : 
  * @Last Modified By   : rajeevsengar@persistent.com
- * @Last Modified On   : 30/12/2019, 11:53:40 am
+ * @Last Modified On   : 30/12/2019, 4:46:53 pm
  * @Modification Log   : 
  * Ver       Date            Author      		    Modification
  * 1.0    30/12/2019   rajeevsengar@persistent.com     Initial Version
@@ -14,7 +14,7 @@ public with sharing class FormController {
 
     @AuraEnabled
     public static void savePassword(Password__c passwordObject){
-        upsert passwordObject;
+        PasswordsListController.saveAllPasswords(new List<Password__c>{passwordObject});
     }
 
     @AuraEnabled

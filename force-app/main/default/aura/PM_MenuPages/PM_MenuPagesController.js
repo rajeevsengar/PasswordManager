@@ -13,8 +13,13 @@
         helper.createCmp(component);
     },
 
-    handleHeaderSave: function (component, event, helper) {
+    handleHeaderSave: function (component) {
         var passwordsList = component.find('PasswordsListid');
-        passwordsList[0].headerSaveClickedMethod();
+        passwordsList[0].headerButtonClickedMethod('save');
+    },
+
+    handleHeaderAdd: function (component) {
+        var passwordsList = component.find('PasswordsListid');
+        passwordsList[0].headerButtonClickedMethod('add');
     },
 })

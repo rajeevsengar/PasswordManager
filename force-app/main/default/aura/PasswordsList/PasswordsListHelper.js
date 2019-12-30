@@ -10,6 +10,7 @@
                 component.set("v.websiteOptions", response.getReturnValue().websites);
                 console.log(JSON.stringify(response.getReturnValue()));
                 self.addNew(component);
+                self.hideSpinner(component);
             }
         });
 
@@ -20,6 +21,7 @@
         var length = component.get("v.passwordsList").length;
         component.set(`v.passwordsList[${length}].Id`, null);
     },
+
     saveAllPasswords: function (component) {
         console.table(component.get("v.passwordsList"));
         console.log(JSON.stringify(component.get("v.passwordsList")));
@@ -32,7 +34,7 @@
         action.setCallback(this, function (response) {
             var state = response.getState();
             if (state === "SUCCESS") {
-                self.hideSpinner(component);
+                self.getAllPasswords(component);
             } else {
                 alert('else');
             }
