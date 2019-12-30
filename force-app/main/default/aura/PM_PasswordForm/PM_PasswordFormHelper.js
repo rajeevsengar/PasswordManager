@@ -30,12 +30,21 @@
     },
 
     handlePassworddelete: function (component, event) {
+        var action = component.get("c.deletePassword");
         var self = this;
-        component.find("passwordRecordCreator").deleteRecord(
-            $A.getCallback(function () {
+        action.setParams({
+            passwordObject: component.get("v.newPassword")
+        });
+        this.showSpinner(component);
+        action.setCallback(this, function (response) {
+            var state = response.getState();
+            if (state === "SUCCESS") {
+                self.hideSpinner(component);
                 self.refreshPage(component);
-            })
-        );
+            }
+        });
+
+        $A.enqueueAction(action);
     },
 
     refreshPage: function (component) {
