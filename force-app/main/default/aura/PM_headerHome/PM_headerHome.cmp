@@ -3,8 +3,8 @@
   @Description        : 
   @Author             : rajeev_sengar@persistent.com
   @Group              : 
-  @Last Modified By   : rajeevsengar@persistent.com
-  @Last Modified On   : 31/12/2019, 1:32:53 pm
+  @Last Modified By   : rajeev_sengar@persistent.com
+  @Last Modified On   : 1/1/2020, 12:37:09 AM
   @Modification Log   : 
   Ver       Date            Author      		    Modification
   1.0    12/25/2019   rajeev_sengar@persistent.com     Initial Version
@@ -13,7 +13,20 @@
   <aura:attribute name="totalRecords" type="Integer" />
   <aura:registerEvent name="headerButtonEvent" type="c:PM_HeaderButtonEvent" />
   <lightning:card class="headerStyle">
-    <lightning:button label="Save" iconName="utility:save" onclick="{!c.onSave}" class="buttonCSS"></lightning:button>
-    <lightning:button label="Add" iconName="utility:add" onclick="{!c.onAdd}" class="buttonCSS"></lightning:button>
+    <lightning:layout>
+      <lightning:layoutItem size="1">
+        <lightning:layout multipleRows="true" verticalAlign="end">
+          <lightning:layoutItem size="7">
+            <lightning:button label="Save" iconName="utility:save" onclick="{!c.onSave}"
+              class="buttonCSS slds-size_full">
+            </lightning:button>
+          </lightning:layoutItem>
+          <lightning:layoutItem size="7">
+            <lightning:button label="Add" iconName="utility:add" onclick="{!c.onAdd}" class="buttonCSS slds-size_full">
+            </lightning:button>
+          </lightning:layoutItem>
+        </lightning:layout>
+      </lightning:layoutItem>
+    </lightning:layout>
   </lightning:card>
 </aura:component>

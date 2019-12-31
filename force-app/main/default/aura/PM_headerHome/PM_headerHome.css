@@ -4,5 +4,6 @@
 }
 
 .THIS .buttonCSS {
+    border-left: none;
     background-image: url("/resource/background_images/background_images/header.jpeg");
 }
