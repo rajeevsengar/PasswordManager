@@ -6,6 +6,7 @@
         var recordsPerPage = recordsSet * recordsConstant;
         component.set("v.startIndex", recordsPerPage * (pageNumber - 1));
         component.set("v.lastIndex", recordsPerPage * pageNumber);
+        this.sendIndexes(component);
     },
 
     sendIndexes: function (component) {
@@ -17,5 +18,13 @@
             "recordsSet": recordsSet
         });
         paginationEvent.fire();
+    },
+
+    calculateTotalPages: function (component) {
+        var recordsSet = component.get("v.recordsSet");
+        var totalRecords = component.get("v.totalRecords");
+        var recordsConstant = component.get("v.recordsConstant");
+        var recordsPerPage = recordsSet * recordsConstant;
+        component.set("v.totalPages", Math.ceil(totalRecords / recordsPerPage));
     },
 })
