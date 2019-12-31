@@ -17,6 +17,10 @@
 
     },
     handlePaginationEvent: function (component, event, helper) {
-        component.set("v.menuPageHeight", event.getParam("numberOfRecords") * 790);
+        component.set("v.menuPageHeight", event.getParam("recordsSet") * 790);
+    },
+
+    handleTotalRecordsEvent: function (component, event, helper) {
+        component.set("v.totalRecords", event.getParam("totalRecords"));
     },
 });

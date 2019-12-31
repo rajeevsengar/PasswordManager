@@ -21,4 +21,5 @@
         component.set("v.start", event.getParam("startIndex"));
         component.set("v.end", event.getParam("lastIndex"));
     },
+
 })

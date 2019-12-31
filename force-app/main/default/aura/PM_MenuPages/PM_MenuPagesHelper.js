@@ -5,9 +5,9 @@
         var selectedCmpName = "c:" + cmpName;
         $A.createComponent(
             selectedCmpName, {
-                "aura:id": cmpName + "id",
-                "label": component.get("v.selectedLabel"),
-            },
+            "aura:id": cmpName + "id",
+            "label": component.get("v.selectedLabel"),
+        },
             function (newCmp, status, errorMessage) {
                 //Add the new button to the body array
                 if (status === "SUCCESS") {

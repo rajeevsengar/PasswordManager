@@ -23,7 +23,16 @@
         component.set(`v.passwordsList[${length}].Id`, null);
         passwordsList.reverse();
         component.set("v.passwordsList", passwordsList);
+        this.sendTotalRecords(component, length + 1);
     },
+
+    sendTotalRecords: function (component, length) {
+        var totalRecordsEvent = component.getEvent("totalRecordLoadedEvent");
+        totalRecordsEvent.setParams({ "totalRecords": length });
+        totalRecordsEvent.fire();
+    },
+
+
 
     saveAllPasswords: function (component) {
         var action = component.get("c.saveAllPasswords");

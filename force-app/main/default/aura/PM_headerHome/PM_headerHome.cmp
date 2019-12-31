@@ -4,12 +4,13 @@
   @Author             : rajeev_sengar@persistent.com
   @Group              : 
   @Last Modified By   : rajeevsengar@persistent.com
-  @Last Modified On   : 30/12/2019, 5:55:32 pm
+  @Last Modified On   : 31/12/2019, 1:32:53 pm
   @Modification Log   : 
   Ver       Date            Author      		    Modification
   1.0    12/25/2019   rajeev_sengar@persistent.com     Initial Version
 -->
 <aura:component>
+  <aura:attribute name="totalRecords" type="Integer" />
   <aura:registerEvent name="headerButtonEvent" type="c:PM_HeaderButtonEvent" />
   <lightning:card class="headerStyle">
     <lightning:button label="Save" iconName="utility:save" onclick="{!c.onSave}" class="buttonCSS"></lightning:button>

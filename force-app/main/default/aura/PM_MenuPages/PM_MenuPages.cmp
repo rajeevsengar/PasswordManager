@@ -4,7 +4,7 @@
   @Author             : rajeev_sengar@persistent.com
   @Group              : 
   @Last Modified By   : rajeevsengar@persistent.com
-  @Last Modified On   : 30/12/2019, 5:46:59 pm
+  @Last Modified On   : 31/12/2019, 1:30:26 pm
   @Modification Log   : 
   Ver       Date            Author      		    Modification
   1.0    12/15/2019   rajeev_sengar@persistent.com     Initial Version
@@ -20,7 +20,6 @@
   <aura:handler name="change" value="{!v.selectedComponent}" action="{!c.handleChangeItem}" />
   <aura:handler name="change" value="{!v.headerSaveClicked}" action="{!c.handleHeaderSave}" />
   <aura:handler name="change" value="{!v.headerAddClicked}" action="{!c.handleHeaderAdd}" />
-
   <div class="slds-p-around_small myStyle" style="{! 'height:' + v.height + 'px'}">
     {!v.body}
   </div>

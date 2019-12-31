@@ -4,36 +4,51 @@
   @Author             : rajeev_sengar@persistent.com
   @Group              : 
   @Last Modified By   : rajeev_sengar@persistent.com
-  @Last Modified On   : 12/31/2019, 2:11:53 AM
+  @Last Modified On   : 12/31/2019, 11:54:04 PM
   @Modification Log   : 
   Ver       Date            Author      		    Modification
   1.0    12/30/2019   rajeev_sengar@persistent.com     Initial Version
 -->
 <aura:component>
   <aura:attribute name="height" type="Integer" />
-  <aura:attribute name="numberOfRecords" type="Integer" default="1" />
+  <aura:attribute name="recordsSet" type="String" default="1" />
   <aura:attribute name="recordsConstant" type="Integer" default="6" />
   <aura:attribute name="startIndex" type="Integer" default="0" />
   <aura:attribute name="lastIndex" type="Integer" default="6" />
   <aura:attribute name="pageNumber" type="Integer" default="1" />
-  <aura:handler name="init" value="{!this}" action="{!c.init}" />
-  <aura:registerEvent name="paginationEvent" type="c:PM_PaginationEvent" />
-  <aura:handler name="change" value="{!v.pageNumber}" action="{!c.handlePageNumberChange}" />
+  <aura:attribute name="totalPages" type="Integer" default="1" />
+  <aura:attribute name="totalRecords" type="Integer" default="0" />
   <aura:attribute name="recordsPerPage" type="List" default="[
-    {'label': '6', 'value': '1'},
-    {'label': '12', 'value': '2'},
-    {'label': '18', 'value': '3'},
-    ]" />
+  {'label': '6', 'value': '1'},
+  {'label': '12', 'value': '2'},
+  {'label': '18', 'value': '3'},
+  ]" />
+  <aura:handler name="init" value="{!this}" action="{!c.init}" />
+  <aura:handler name="change" value="{!v.pageNumber}" action="{!c.handlePageNumberChange}" />
+  <aura:handler name="change" value="{!v.totalRecords}" action="{!c.handleTotalRecordsChange}" />
+  <aura:registerEvent name="paginationEvent" type="c:PM_PaginationEvent" />
 
   <div class="slds-p-around_small myStyle" style="{! 'height:' + v.height + 'px'}">
-    <lightning:layout multipleRows="true" HorizontalAlign="space" VerticalAlign="start">
-      <lightning:layoutitem size="6" flexibility="auto">
-        <lightning:combobox label="RecordsPerPage" value="{! v.numberOfRecords}" options="{! v.recordsPerPage }"
-          onchange="{! c.handlePageNumberChange}" dropdownAlignment="bottom-left" variant="label-hidden" />
+    <lightning:layout HorizontalAlign="center">
+      <lightning:layoutitem size="5" flexibility="auto">
+        <lightning:layout HorizontalAlign="center">
+          <lightning:layoutitem size="3" flexibility="auto">
+            <label class="slds-form-element__label labelCSS" for="form-element-01">RecordsPerPage</label>
+          </lightning:layoutitem>
+          <lightning:layoutitem size="2" alignmentBump="right">
+            <lightning:combobox value="{! v.recordsSet}" options="{! v.recordsPerPage }"
+              onchange="{! c.handleRecordPerPageChange}" dropdownAlignment="bottom-left" variant="label-hidden" />
+          </lightning:layoutitem>
+        </lightning:layout>
       </lightning:layoutitem>
-      <lightning:layoutitem size="6" flexibility="auto">
-        <lightning:button label="Next" onclick="{!c.onNext}" />
-        <lightning:button label="Previous" onclick="{!c.onPrevious}" />
+      <lightning:layoutitem size="3" flexibility="auto">
+        <lightning:button label="Previous" onclick="{!c.onPrevious}" disabled="{! if(v.pageNumber == 1,true,false)}" />
+        <lightning:button label="Next" onclick="{!c.onNext}"
+          disabled="{! if(v.lastIndex ge v.totalRecords,true,false)}" />
+      </lightning:layoutitem>
+      <lightning:layoutitem size="1" flexibility="auto" alignmentBump="left">
+        <label class="slds-form-element__label labelCSS" for="form-element-01">{!v.pageNumber} of
+          {!v.totalPages}</label>
       </lightning:layoutitem>
     </lightning:layout>
   </div>
