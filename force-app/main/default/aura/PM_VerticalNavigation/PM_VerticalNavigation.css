@@ -19,6 +19,5 @@
 }
 
 .myStyle.THIS {
-    background-image: url(/resource/dark_background);
-    height: 800px;
+    background-image: url("/resource/background_images/background_images/dark_background.jpeg");
 }

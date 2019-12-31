@@ -29,7 +29,6 @@
     },
     handleSelect: function (cmp, event, helper) {
         //return name of selected tree item
-        debugger
         var selectedItem = event.getParam('name');
         helper.getLabel(cmp, selectedItem);
         var selectedLabel = cmp.get("v.selectedLabel");
