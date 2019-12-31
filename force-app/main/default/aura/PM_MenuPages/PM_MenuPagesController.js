@@ -6,6 +6,7 @@
 
         component.set("v.selectedComponent", selectedComponent);
         component.set("v.selectedLabel", selectedLabel);
+
         helper.createCmp(component);
     },
 

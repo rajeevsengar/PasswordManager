@@ -16,4 +16,10 @@
     handlePageRefreshEvent: function (component, event, helper) {
         helper.getAllPasswords(component);
     },
+
+    handlePaginationEvent: function (component, event, helper) {
+        component.set("v.start", event.getParam("startIndex"));
+        component.set("v.end", event.getParam("lastIndex"));
+    },
+
 })

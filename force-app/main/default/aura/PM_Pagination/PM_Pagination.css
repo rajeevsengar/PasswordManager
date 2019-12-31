@@ -1,0 +1,9 @@
+.myStyle.THIS {
+    background-image: url("/resource/background_images/background_images/dark_background.jpeg");
+}
+
+.THIS .labelCSS {
+    font-size: 0.9rem;
+    color: gold;
+    font-family: sans-serif;
+}
