@@ -3,8 +3,12 @@
         helper.getWebsiteOptions(component);
     },
 
-    handleChange: function (component, event, helper) {
+    handleCategoryChange: function (component, event, helper) {
         helper.getWebsiteOptions(component);
+    },
+
+    handleWebsiteChange: function (component, event, helper) {
+        helper.getWebsiteLabel(component, event);
     },
 
     onSave: function (component, event, helper) {
