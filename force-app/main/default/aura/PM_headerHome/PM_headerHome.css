@@ -4,6 +4,33 @@
 }
 
 .THIS .buttonCSS {
+    flex: 1 1 auto;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
     border-left: none;
-    background-image: url("/resource/background_images/background_images/header.jpeg");
 }
+
+.THIS .labelCSS {
+    font-size: 0.9rem;
+    color: gold;
+    font-family: sans-serif;
+}
+
+  /* Demo Stuff End -> */
+  
+  /* <- Magic Stuff Start */
+  
+  .THIS .buttonCSS:hover {
+    background-position: right center; /* change the direction of the change here */
+  }
+  
+  .THIS .btn-1 {
+    background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+  }
+
+  .THIS .btn-2 {
+    background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+  }

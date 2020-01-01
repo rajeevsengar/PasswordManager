@@ -1,5 +1,5 @@
 ({
-    myAction : function(component, event, helper) {
-
+    onButtonClicked: function (component, event, helper) {
+        console.log("BAList");
     }
 })

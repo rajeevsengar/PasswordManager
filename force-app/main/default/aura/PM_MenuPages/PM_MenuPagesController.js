@@ -15,12 +15,12 @@
     },
 
     handleHeaderSave: function (component) {
-        var passwordsList = component.find('PasswordsListid');
+        var passwordsList = component.find(component.get('v.selectedComponentId'));
         passwordsList[0].headerButtonClickedMethod('save');
     },
 
     handleHeaderAdd: function (component) {
-        var passwordsList = component.find('PasswordsListid');
+        var passwordsList = component.find(component.get('v.selectedComponentId'));
         passwordsList[0].headerButtonClickedMethod('add');
     },
 })
