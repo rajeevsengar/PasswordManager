@@ -1,5 +1,6 @@
 ({
     init: function (component, event, helper) {
+        component.set("v.resetPassword", JSON.parse(JSON.stringify(component.get("v.newPassword"))));
         helper.getWebsiteOptions(component);
     },
 
@@ -13,6 +14,10 @@
 
     onSave: function (component, event, helper) {
         helper.handlePasswordSave(component, event);
+    },
+
+    onReset: function (component) {
+        component.set("v.newPassword", JSON.parse(JSON.stringify(component.get("v.resetPassword"))));
     },
 
     onClear: function (component, event, helper) {
