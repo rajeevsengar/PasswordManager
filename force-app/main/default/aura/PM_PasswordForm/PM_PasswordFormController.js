@@ -1,6 +1,7 @@
 ({
     init: function (component, event, helper) {
-        component.set("v.resetPassword", JSON.parse(JSON.stringify(component.get("v.newPassword"))));
+        component.get("v.newPassword.Id") || component.set("v.isUnsavedChanges", true);
+        helper.copyToResetPassword(component);
         helper.getWebsiteOptions(component);
     },
 
@@ -18,6 +19,11 @@
 
     onReset: function (component) {
         component.set("v.newPassword", JSON.parse(JSON.stringify(component.get("v.resetPassword"))));
+    },
+    handleNewPasswordChange: function (component) {
+        if (component.get("v.newPassword.Id")) {
+            component.set("v.isUnsavedChanges", JSON.stringify(component.get("v.newPassword")) != JSON.stringify(component.get("v.resetPassword")));
+        }
     },
 
     onClear: function (component, event, helper) {
@@ -60,11 +66,7 @@
     },
 
     onDuplicate: function (component, event, helper) {
-        var duplicateEvent = component.getEvent("formDuplicateEvent");
-        duplicateEvent.setParams({
-            "recordId": component.get("v.newPassword.Id")
-        });
-        duplicateEvent.fire();
+        helper.sendIndex(component, 'duplicate');
     },
 
 })

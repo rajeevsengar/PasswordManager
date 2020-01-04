@@ -28,14 +28,8 @@
 
     duplicateForm: function (component, event) {
         var passwordsList = component.get("v.passwordsList");
-        var recordId = event.getParam("recordId");
-        var index;
-        var password = Object.assign({}, passwordsList.find(function (password, i) {
-            if (password.Id === recordId) {
-                index = i;
-                return password;
-            }
-        }));
+        var index = event.getParam("index");
+        var password = Object.assign({}, passwordsList[index]);
         password.Id = null;
         passwordsList.splice(index, 0, password);
         component.set("v.passwordsList", passwordsList);

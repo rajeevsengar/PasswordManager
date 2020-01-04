@@ -38,36 +38,49 @@
         action.setCallback(this, function (response) {
             var state = response.getState();
             if (state === "SUCCESS") {
+                component.set("v.newPassword", response.getReturnValue());
                 self.hideSpinner(component);
                 self.handleSuccess(event);
-                self.refreshPage(component);
+                self.copyToResetPassword(component);
+                component.set("v.isUnsavedChanges", JSON.stringify(component.get("v.newPassword")) != JSON.stringify(component.get("v.resetPassword")));
             }
         });
 
         $A.enqueueAction(action);
     },
 
+    copyToResetPassword: function (component) {
+        component.set("v.resetPassword", JSON.parse(JSON.stringify(component.get("v.newPassword"))));
+    },
     handlePassworddelete: function (component, event) {
-        var action = component.get("c.deletePassword");
         var self = this;
-        action.setParams({
-            passwordObject: component.get("v.newPassword")
-        });
-        this.showSpinner(component);
-        action.setCallback(this, function (response) {
-            var state = response.getState();
-            if (state === "SUCCESS") {
-                self.hideSpinner(component);
-                self.refreshPage(component);
-            }
-        });
+        if (component.get("v.newPassword.Id")) {
+            var action = component.get("c.deletePassword");
+            action.setParams({
+                passwordObject: component.get("v.newPassword")
+            });
+            this.showSpinner(component);
+            action.setCallback(this, function (response) {
+                var state = response.getState();
+                if (state === "SUCCESS") {
+                    self.hideSpinner(component);
+                    self.sendIndex(component, 'delete');
+                }
+            });
 
-        $A.enqueueAction(action);
+            $A.enqueueAction(action);
+        } else {
+            self.sendIndex(component, 'delete');
+        }
     },
 
-    refreshPage: function (component) {
-        var pageRefreshEvent = component.getEvent("pageRefreshEvent");
-        pageRefreshEvent.fire();
+    sendIndex: function (component, context) {
+        var passwordFormIndexEvent = component.getEvent("passwordFormIndexEvent");
+        passwordFormIndexEvent.setParams({
+            "index": component.get("v.index"),
+            "context": context
+        });
+        passwordFormIndexEvent.fire();
     },
 
     handleSuccess: function (event) {
