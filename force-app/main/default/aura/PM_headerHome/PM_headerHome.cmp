@@ -3,8 +3,8 @@
   @Description        : 
   @Author             : rajeev_sengar@persistent.com
   @Group              : 
-  @Last Modified By   : rajeevsengar@persistent.com
-  @Last Modified On   : 1/1/2020, 5:18:49 pm
+  @Last Modified By   : rajeev_sengar@persistent.com
+  @Last Modified On   : 1/3/2020, 9:48:49 PM
   @Modification Log   : 
   Ver       Date            Author      		    Modification
   1.0    12/25/2019   rajeev_sengar@persistent.com     Initial Version
@@ -18,15 +18,24 @@
         <lightning:layout multipleRows="true" verticalAlign="end">
           <lightning:layoutItem size="7">
             <!-- <lightning:button label="Save" iconName="utility:save" onclick="{!c.onSave}"
-              class="buttonCSS slds-size_full"> -->
-            <lightning:button label="Save" iconName="utility:save" onclick="{!c.onSave}"
-              class="buttonCSS btn-1 slds-size_full">
-            </lightning:button>
+              class="buttonCSS btn-1 slds-size_full"> -->
+            <span>
+              <lightning:button label="Save" iconName="utility:save" onclick="{!c.onSave}"
+                class="btn btnSpan slds-size_full">
+              </lightning:button>
+            </span>
           </lightning:layoutItem>
           <lightning:layoutItem size="7">
             <lightning:button label="Add" iconName="utility:add" onclick="{!c.onAdd}"
               class="buttonCSS btn-2 slds-size_full">
             </lightning:button>
+          </lightning:layoutItem>
+          <lightning:layoutItem size="7">
+            <div class="slds-box">
+              <lightning:button label="Add" iconName="utility:add" onclick="{!c.onAdd}" variant="base"
+                class="slds-size_full">
+              </lightning:button>
+            </div>
           </lightning:layoutItem>
         </lightning:layout>
       </lightning:layoutItem>

@@ -11,6 +11,14 @@
         component.set("v.pageNumber", component.get("v.pageNumber") - 1);
     },
 
+    onFirst: function (component) {
+        component.set("v.pageNumber", 1);
+    },
+
+    onLast: function (component) {
+        component.set("v.pageNumber", component.get("v.totalPages"));
+    },
+
     handlePageNumberChange: function (component, event, helper) {
         helper.setIndexes(component);
     },
