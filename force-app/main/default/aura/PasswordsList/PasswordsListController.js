@@ -22,4 +22,8 @@
         component.set("v.end", event.getParam("lastIndex"));
     },
 
+    handleFormDuplicateEvent: function (component, event, helper) {
+        helper.duplicateForm(component, event);
+    },
+
 })

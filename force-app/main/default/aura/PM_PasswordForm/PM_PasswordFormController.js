@@ -54,4 +54,12 @@
         confirm('Are You Sure?') && helper.handlePassworddelete(component, event);
     },
 
+    onDuplicate: function (component, event, helper) {
+        var duplicateEvent = component.getEvent("formDuplicateEvent");
+        duplicateEvent.setParams({
+            "recordId": component.get("v.newPassword.Id")
+        });
+        duplicateEvent.fire();
+    },
+
 })

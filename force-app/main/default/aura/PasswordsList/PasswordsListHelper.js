@@ -26,9 +26,27 @@
         this.sendTotalRecords(component, length + 1);
     },
 
+    duplicateForm: function (component, event) {
+        var passwordsList = component.get("v.passwordsList");
+        var recordId = event.getParam("recordId");
+        var index;
+        var password = Object.assign({}, passwordsList.find(function (password, i) {
+            if (password.Id === recordId) {
+                index = i;
+                return password;
+            }
+        }));
+        password.Id = null;
+        passwordsList.splice(index, 0, password);
+        component.set("v.passwordsList", passwordsList);
+        this.sendTotalRecords(component, component.get("v.passwordsList").length);
+    },
+
     sendTotalRecords: function (component, length) {
         var totalRecordsEvent = component.getEvent("totalRecordLoadedEvent");
-        totalRecordsEvent.setParams({ "totalRecords": length });
+        totalRecordsEvent.setParams({
+            "totalRecords": length
+        });
         totalRecordsEvent.fire();
     },
 

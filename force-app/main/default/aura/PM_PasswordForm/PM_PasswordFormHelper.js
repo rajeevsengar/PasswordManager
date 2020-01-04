@@ -5,8 +5,6 @@
         var selectedWebsiteValue = component.get("v.newPassword.Website__c");
         var websiteOptions = component.get("v.websiteOptions");
         var websites = [];
-        console.table(websiteOptions);
-        console.log(selectedWebsiteValue);
         for (var i = 0; i < websiteOptions.length; i++) {
             if (websiteOptions[i].category == selectedCategoryValue)
                 websites.push(websiteOptions[i]);
@@ -21,6 +19,7 @@
 
     getWebsiteLabel: function (component, event) {
         var selectedWebsiteValue = event.getParam("value");
+
         function checkLabel(option) {
             if (option.value == selectedWebsiteValue) {
                 return option;
