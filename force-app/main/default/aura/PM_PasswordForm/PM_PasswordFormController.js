@@ -59,7 +59,10 @@
     },
 
     onDelete: function (component, event, helper) {
-        confirm('Are You Sure?') && helper.handlePassworddelete(component, event);
+        if (Object.keys(component.get("v.newPassword")).length > 1)
+            confirm('Are You Sure?') && helper.handlePassworddelete(component, event);
+        else
+            helper.handlePassworddelete(component, event);
     },
 
     onDuplicate: function (component, event, helper) {
