@@ -39,18 +39,25 @@
             var state = response.getState();
             if (state === "SUCCESS") {
                 component.set("v.newPassword", response.getReturnValue());
+                component.set("v.resetPassword", Object.assign({}, response.getReturnValue()));
                 self.hideSpinner(component);
                 self.handleSuccess(event);
-                self.copyToResetPassword(component);
-                component.set("v.isUnsavedChanges", JSON.stringify(component.get("v.newPassword")) != JSON.stringify(component.get("v.resetPassword")));
+                self.checkIsUnsavedChanges(component);
             }
         });
 
         $A.enqueueAction(action);
     },
 
-    copyToResetPassword: function (component) {
-        component.set("v.resetPassword", JSON.parse(JSON.stringify(component.get("v.newPassword"))));
+    checkIsUnsavedChanges: function (component) {
+        var initialPassword = component.get("v.resetPassword");
+        var currentPassword = component.get("v.newPassword");
+
+        if (JSON.stringify(initialPassword) != JSON.stringify(currentPassword) || !currentPassword.Id) {
+            component.set("v.isUnsavedChanges", true);
+        } else {
+            component.set("v.isUnsavedChanges", false);
+        }
     },
     handlePassworddelete: function (component, event) {
         var self = this;

@@ -1,8 +1,7 @@
 ({
     init: function (component, event, helper) {
-        component.get("v.newPassword.Id") || component.set("v.isUnsavedChanges", true);
-        helper.copyToResetPassword(component);
         helper.getWebsiteOptions(component);
+        helper.checkIsUnsavedChanges(component);
     },
 
     handleCategoryChange: function (component, event, helper) {
@@ -20,10 +19,8 @@
     onReset: function (component) {
         component.set("v.newPassword", JSON.parse(JSON.stringify(component.get("v.resetPassword"))));
     },
-    handleNewPasswordChange: function (component) {
-        if (component.get("v.newPassword.Id")) {
-            component.set("v.isUnsavedChanges", JSON.stringify(component.get("v.newPassword")) != JSON.stringify(component.get("v.resetPassword")));
-        }
+    handleNewPasswordChange: function (component, event, helper) {
+        helper.checkIsUnsavedChanges(component);
     },
 
     onClear: function (component, event, helper) {

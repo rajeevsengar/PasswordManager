@@ -16,24 +16,48 @@
         $A.enqueueAction(action);
     },
 
+    addAttributePasswordsList: function (component) {
+        var passwordsList = component.get("v.passwordsList");
+        var passwordsWrapper = [];
+        passwordsList.forEach(function (item, index) {
+            passwordsWrapper.push({
+                "newPassword": item,
+                "resetPassword": Object.assign({}, item)
+            });
+        });
+        component.set("v.passwordsWrapper", passwordsWrapper);
+    },
+
+    getPasswordsList: function (component) {
+        var passwordsWrapper = component.get("v.passwordsWrapper");
+        var passwordsList = [];
+        passwordsWrapper.forEach(function (item, index) {
+            passwordsList.push(item.newPassword);
+        });
+        component.set("v.passwordsList", passwordsList);
+    },
+
     addNew: function (component) {
         var passwordsList = component.get("v.passwordsList");
         passwordsList.reverse();
-        var length = component.get("v.passwordsList").length;
+        var length = passwordsList.length;
         component.set(`v.passwordsList[${length}].Id`, null);
         passwordsList.reverse();
         component.set("v.passwordsList", passwordsList);
+        this.addAttributePasswordsList(component);
         this.sendTotalRecords(component, length + 1);
     },
 
     duplicateForm: function (component, event) {
+        this.getPasswordsList(component);
         var passwordsList = component.get("v.passwordsList");
         var index = event.getParam("index");
         var password = Object.assign({}, passwordsList[index]);
         password.Id = null;
         passwordsList.splice(index, 0, password);
-        component.set("v.passwordsList", passwordsList);
-        this.sendTotalRecords(component, component.get("v.passwordsList").length);
+        component.set("v.passwordsWrapper.newPassword", passwordsList);
+        this.addAttributePasswordsList(component);
+        this.sendTotalRecords(component, passwordsList.length);
     },
 
     sendTotalRecords: function (component, length) {
@@ -44,9 +68,8 @@
         totalRecordsEvent.fire();
     },
 
-
-
     saveAllPasswords: function (component) {
+        this.getPasswordsList(component);
         var action = component.get("c.saveAllPasswords");
         action.setParams({
             passwordsList: component.get("v.passwordsList")
