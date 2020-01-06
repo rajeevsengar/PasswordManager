@@ -9,7 +9,7 @@
                 component.set("v.categoryOptions", response.getReturnValue().categories);
                 component.set("v.websiteOptions", response.getReturnValue().websites);
                 self.createPasswordsWrapper(component);
-                self.addNew(component);
+                self.addNewForm(component);
                 self.hideSpinner(component);
             }
         });
@@ -37,6 +37,14 @@
         var passwordsWrapper = component.get("v.passwordsWrapper");
         passwordsWrapper.splice(index, 0, passwordJson);
         component.set("v.passwordsWrapper", passwordsWrapper);
+        this.sendTotalRecords(component, passwordsWrapper.length);
+    },
+
+    removeElementPasswordsWrapper: function (component, index) {
+        var passwordsWrapper = component.get("v.passwordsWrapper");
+        passwordsWrapper.splice(index, 1);
+        component.set("v.passwordsWrapper", passwordsWrapper);
+        this.sendTotalRecords(component, passwordsWrapper.length);
     },
 
     getPasswordsList: function (component) {
@@ -48,7 +56,7 @@
         component.set("v.passwordsList", passwordsList);
     },
 
-    addNew: function (component) {
+    addNewForm: function (component) {
         var passwordsList = component.get("v.passwordsList");
         passwordsList.reverse();
         var length = passwordsList.length;
@@ -56,7 +64,6 @@
         passwordsList.reverse();
         component.set("v.passwordsList", passwordsList);
         this.addElementPasswordsWrapper(component, 0, passwordsList[0]);
-        this.sendTotalRecords(component, length + 1);
     },
 
     duplicateForm: function (component, event) {
@@ -67,7 +74,6 @@
         password.Id = null;
         passwordsList.splice(index, 0, password);
         this.addElementPasswordsWrapper(component, index, password);
-        this.sendTotalRecords(component, passwordsList.length);
     },
 
     sendTotalRecords: function (component, length) {

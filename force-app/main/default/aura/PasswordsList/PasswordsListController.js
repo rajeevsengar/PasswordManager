@@ -10,7 +10,7 @@
         if (context == 'save')
             helper.saveAllPasswords(component);
         else if (context == 'add')
-            helper.addNew(component);
+            helper.addNewForm(component);
     },
 
 
@@ -23,9 +23,8 @@
         if (event.getParam("context") == 'duplicate') {
             helper.duplicateForm(component, event);
         } else if (event.getParam("context") == 'delete') {
-            var passwordsList = component.get("v.passwordsList");
-            passwordsList.splice(event.getParam("index"), 1);
-            component.set("v.passwordsList", passwordsList);
+            helper.removeElementPasswordsWrapper(component, event.getParam("index"));
+            helper.getPasswordsList(component);
         }
     },
 
