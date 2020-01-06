@@ -3,12 +3,15 @@
   @Description        : 
   @Author             : rajeev_sengar@persistent.com
   @Group              : 
-  @Last Modified By   : rajeev_sengar@persistent.com
-  @Last Modified On   : 12/15/2019, 1:27:21 PM
+  @Last Modified By   : rajeevsengar@persistent.com
+  @Last Modified On   : 1/1/2020, 1:45:40 pm
   @Modification Log   : 
   Ver       Date            Author      		    Modification
   1.0    12/15/2019   rajeev_sengar@persistent.com     Initial Version
 -->
 <aura:component>
-    BankAccountsList
+  <aura:method name="headerButtonClickedMethod" action="{!c.onButtonClicked}" access="public">
+    <aura:attribute name="context" type="String" />
+  </aura:method>
+  BankAccountsList
 </aura:component>

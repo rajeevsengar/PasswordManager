@@ -1,14 +1,26 @@
 ({
     init: function (component, event, helper) {
         helper.getWebsiteOptions(component);
+        helper.checkIsUnsavedChanges(component);
     },
 
-    handleChange: function (component, event, helper) {
+    handleCategoryChange: function (component, event, helper) {
         helper.getWebsiteOptions(component);
+    },
+
+    handleWebsiteChange: function (component, event, helper) {
+        helper.getWebsiteLabel(component, event);
     },
 
     onSave: function (component, event, helper) {
         helper.handlePasswordSave(component, event);
+    },
+
+    onReset: function (component) {
+        component.set("v.newPassword", JSON.parse(JSON.stringify(component.get("v.resetPassword"))));
+    },
+    handleNewPasswordChange: function (component, event, helper) {
+        helper.checkIsUnsavedChanges(component);
     },
 
     onClear: function (component, event, helper) {
@@ -48,6 +60,10 @@
 
     onDelete: function (component, event, helper) {
         confirm('Are You Sure?') && helper.handlePassworddelete(component, event);
+    },
+
+    onDuplicate: function (component, event, helper) {
+        helper.sendIndex(component, 'duplicate');
     },
 
 })

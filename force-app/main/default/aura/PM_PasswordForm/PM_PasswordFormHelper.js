@@ -2,13 +2,30 @@
 
     getWebsiteOptions: function (component) {
         var selectedCategoryValue = component.get("v.newPassword.Category__c");
+        var selectedWebsiteValue = component.get("v.newPassword.Website__c");
         var websiteOptions = component.get("v.websiteOptions");
         var websites = [];
         for (var i = 0; i < websiteOptions.length; i++) {
             if (websiteOptions[i].category == selectedCategoryValue)
                 websites.push(websiteOptions[i]);
+            if (!selectedCategoryValue) {
+                component.set("v.selectedLabel", "");
+            } else if (websiteOptions[i].value === selectedWebsiteValue)
+                component.set("v.selectedLabel", websiteOptions[i].label.toLowerCase());
+
         }
         component.set("v.websites", websites);
+    },
+
+    getWebsiteLabel: function (component, event) {
+        var selectedWebsiteValue = event.getParam("value");
+
+        function checkLabel(option) {
+            if (option.value == selectedWebsiteValue) {
+                return option;
+            }
+        }
+        component.set("v.selectedLabel", component.get("v.websiteOptions").find(checkLabel).label.toLowerCase());
     },
 
     handlePasswordSave: function (component, event) {
@@ -21,36 +38,56 @@
         action.setCallback(this, function (response) {
             var state = response.getState();
             if (state === "SUCCESS") {
+                component.set("v.newPassword", response.getReturnValue());
+                component.set("v.resetPassword", Object.assign({}, response.getReturnValue()));
                 self.hideSpinner(component);
                 self.handleSuccess(event);
-                self.refreshPage(component);
+                self.checkIsUnsavedChanges(component);
             }
         });
 
         $A.enqueueAction(action);
     },
 
+    checkIsUnsavedChanges: function (component) {
+        var initialPassword = component.get("v.resetPassword");
+        var currentPassword = component.get("v.newPassword");
+
+        if (JSON.stringify(initialPassword) != JSON.stringify(currentPassword) || !currentPassword.Id) {
+            component.set("v.isUnsavedChanges", true);
+        } else {
+            component.set("v.isUnsavedChanges", false);
+        }
+    },
     handlePassworddelete: function (component, event) {
-        var action = component.get("c.deletePassword");
         var self = this;
-        action.setParams({
-            passwordObject: component.get("v.newPassword")
-        });
-        this.showSpinner(component);
-        action.setCallback(this, function (response) {
-            var state = response.getState();
-            if (state === "SUCCESS") {
-                self.hideSpinner(component);
-                self.refreshPage(component);
-            }
-        });
+        if (component.get("v.newPassword.Id")) {
+            var action = component.get("c.deletePassword");
+            action.setParams({
+                passwordObject: component.get("v.newPassword")
+            });
+            this.showSpinner(component);
+            action.setCallback(this, function (response) {
+                var state = response.getState();
+                if (state === "SUCCESS") {
+                    self.hideSpinner(component);
+                    self.sendIndex(component, 'delete');
+                }
+            });
 
-        $A.enqueueAction(action);
+            $A.enqueueAction(action);
+        } else {
+            self.sendIndex(component, 'delete');
+        }
     },
 
-    refreshPage: function (component) {
-        var pageRefreshEvent = component.getEvent("pageRefreshEvent");
-        pageRefreshEvent.fire();
+    sendIndex: function (component, context) {
+        var passwordFormIndexEvent = component.getEvent("passwordFormIndexEvent");
+        passwordFormIndexEvent.setParams({
+            "index": component.get("v.index"),
+            "context": context
+        });
+        passwordFormIndexEvent.fire();
     },
 
     handleSuccess: function (event) {

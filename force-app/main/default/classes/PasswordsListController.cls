@@ -19,13 +19,17 @@ public with sharing class PasswordsListController {
 
     @AuraEnabled
     public static void saveAllPasswords(List<Password__c> passwordsList){
+        upsert refinePasswords(passwordsList);
+    }
+
+    public static List<Password__c> refinePasswords(List<Password__c> passwordsList){
         for (Integer i = (passwordsList.size()-1) ; i>= 0 ; i--){
             Password__c password = passwordsList[i];
             if(String.isBlank(password.Password__c) || String.isBlank(password.Username__c)){
                 passwordsList.remove(i);
             }
         }
-        upsert passwordsList;
+        return passwordsList;
     }
 
     

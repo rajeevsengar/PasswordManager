@@ -13,8 +13,10 @@ public with sharing class FormController {
     private static String categoryId;
 
     @AuraEnabled
-    public static void savePassword(Password__c passwordObject){
-        PasswordsListController.saveAllPasswords(new List<Password__c>{passwordObject});
+    public static Password__c savePassword(Password__c passwordObject){
+        passwordObject = PasswordsListController.refinePasswords(new List<Password__c>{passwordObject})[0];
+        upsert passwordObject;
+        return passwordObject;
     }
 
     @AuraEnabled

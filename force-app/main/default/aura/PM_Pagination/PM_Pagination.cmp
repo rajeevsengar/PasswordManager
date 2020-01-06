@@ -4,7 +4,7 @@
   @Author             : rajeev_sengar@persistent.com
   @Group              : 
   @Last Modified By   : rajeev_sengar@persistent.com
-  @Last Modified On   : 12/31/2019, 11:54:04 PM
+  @Last Modified On   : 1/5/2020, 3:45:48 AM
   @Modification Log   : 
   Ver       Date            Author      		    Modification
   1.0    12/30/2019   rajeev_sengar@persistent.com     Initial Version
@@ -29,7 +29,7 @@
   <aura:registerEvent name="paginationEvent" type="c:PM_PaginationEvent" />
 
   <div class="slds-p-around_small myStyle" style="{! 'height:' + v.height + 'px'}">
-    <lightning:layout HorizontalAlign="center">
+    <lightning:layout HorizontalAlign="center" class="slds-p-right_small">
       <lightning:layoutitem size="5" flexibility="auto">
         <lightning:layout HorizontalAlign="center">
           <lightning:layoutitem size="3" flexibility="auto">
@@ -41,14 +41,37 @@
           </lightning:layoutitem>
         </lightning:layout>
       </lightning:layoutitem>
-      <lightning:layoutitem size="3" flexibility="auto">
-        <lightning:button label="Previous" onclick="{!c.onPrevious}" disabled="{! if(v.pageNumber == 1,true,false)}" />
-        <lightning:button label="Next" onclick="{!c.onNext}"
-          disabled="{! if(v.lastIndex ge v.totalRecords,true,false)}" />
+      <lightning:layoutitem size="4" flexibility="auto">
+        <lightning:layout horizontalAlign="spread">
+          <lightning:layoutitem size="2" flexibility="auto" class="slds-p-right_x-small">
+            <lightning:button label="First" onclick="{!c.onFirst}" disabled="{! if(v.pageNumber == 1,true,false)}"
+              class="slds-size_full" />
+          </lightning:layoutitem>
+          <lightning:layoutitem size="2" flexibility="auto">
+            <lightning:button label="Previous" onclick="{!c.onPrevious}" disabled="{! if(v.pageNumber == 1,true,false)}"
+              class="slds-size_full" />
+          </lightning:layoutitem>
+          <lightning:layoutitem size="2" flexibility="auto">
+            <label class="slds-form-element__label slds-p-left_small labelCSS" for="form-element-01">{!v.pageNumber} of
+              {!v.totalPages}</label>
+          </lightning:layoutitem>
+          <lightning:layoutitem size="2" flexibility="auto" class="slds-p-right_x-small">
+            <lightning:button label="Next" onclick="{!c.onNext}"
+              disabled="{! if(v.lastIndex ge v.totalRecords,true,false)}" class="slds-size_full" />
+          </lightning:layoutitem>
+          <lightning:layoutitem size="2" flexibility="auto">
+            <lightning:button label="Last" onclick="{!c.onLast}"
+              disabled="{! if(v.lastIndex ge v.totalRecords,true,false)}" class="slds-size_full" />
+          </lightning:layoutitem>
+        </lightning:layout>
       </lightning:layoutitem>
-      <lightning:layoutitem size="1" flexibility="auto" alignmentBump="left">
-        <label class="slds-form-element__label labelCSS" for="form-element-01">{!v.pageNumber} of
-          {!v.totalPages}</label>
+      <lightning:layoutitem size="2" flexibility="auto" alignmentBump="left">
+        <div class="slds-clearfix">
+          <div class="slds-float_right">
+            <label class="slds-form-element__label labelCSS" for="form-element-01">Total Records::
+              {!v.totalRecords}</label>
+          </div>
+        </div>
       </lightning:layoutitem>
     </lightning:layout>
   </div>
