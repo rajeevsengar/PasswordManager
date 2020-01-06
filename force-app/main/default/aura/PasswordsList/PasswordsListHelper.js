@@ -8,6 +8,7 @@
                 component.set("v.passwordsList", response.getReturnValue().passwords);
                 component.set("v.categoryOptions", response.getReturnValue().categories);
                 component.set("v.websiteOptions", response.getReturnValue().websites);
+                self.createPasswordsWrapper(component);
                 self.addNew(component);
                 self.hideSpinner(component);
             }
@@ -16,7 +17,7 @@
         $A.enqueueAction(action);
     },
 
-    addAttributePasswordsList: function (component) {
+    createPasswordsWrapper: function (component) {
         var passwordsList = component.get("v.passwordsList");
         var passwordsWrapper = [];
         passwordsList.forEach(function (item, index) {
@@ -25,6 +26,16 @@
                 "resetPassword": Object.assign({}, item)
             });
         });
+        component.set("v.passwordsWrapper", passwordsWrapper);
+    },
+
+    addElementPasswordsWrapper: function (component, index, password) {
+        var passwordJson = {
+            "newPassword": password,
+            "resetPassword": Object.assign({}, password)
+        };
+        var passwordsWrapper = component.get("v.passwordsWrapper");
+        passwordsWrapper.splice(index, 0, passwordJson);
         component.set("v.passwordsWrapper", passwordsWrapper);
     },
 
@@ -44,7 +55,7 @@
         component.set(`v.passwordsList[${length}].Id`, null);
         passwordsList.reverse();
         component.set("v.passwordsList", passwordsList);
-        this.addAttributePasswordsList(component);
+        this.addElementPasswordsWrapper(component, 0, passwordsList[0]);
         this.sendTotalRecords(component, length + 1);
     },
 
@@ -55,8 +66,7 @@
         var password = Object.assign({}, passwordsList[index]);
         password.Id = null;
         passwordsList.splice(index, 0, password);
-        component.set("v.passwordsWrapper.newPassword", passwordsList);
-        this.addAttributePasswordsList(component);
+        this.addElementPasswordsWrapper(component, index, password);
         this.sendTotalRecords(component, passwordsList.length);
     },
 
@@ -86,6 +96,7 @@
         });
         $A.enqueueAction(action);
     },
+
     showSpinner: function (component) {
         var spinner = component.find("mySpinner");
         $A.util.removeClass(spinner, "slds-hide");
